@@ -1,0 +1,31 @@
+---
+layout: index
+title: 存档文件
+---
+<ul class="posts">
+    {% for post in paginator.posts %}
+    {% capture m %}{{post.date | date:"%m"}}{% endcapture %}
+    {% if month != m %}
+    {% assign month = m %}
+    <li class="listing-seperator">{{ post.date | date:"%Y-%m" }}</li>
+    {% endif %}
+    <li class="listing-item">
+    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<div style="display: flex;justify-content: space-between;" >
+    {%if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">上一页</a>
+  {% else %}
+    <span class="previous">上一页</span>
+  {% endif %}
+  <span class="page_number ">第 {{ paginator.page }}页，共 {{ paginator.total_pages }} 页。</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">下一页</a>
+  {% else %}
+    <span class="next ">下一页</span>
+  {% endif %}
+</div>

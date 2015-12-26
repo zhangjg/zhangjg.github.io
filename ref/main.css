@@ -1,0 +1,145 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  display: flex;
+  display: -webkit-flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  margin:0;
+}
+.ds-thread,#content
+{
+    flex-direction: column;
+    justify-content: center;
+    margin: 10ex;
+    border: solid rgba(0, 0, 0, 0.52);
+    border-radius: 5ex;
+    padding: 10ex;
+}
+
+footer
+{
+    margin: -5ex 10ex 1ex;
+    border: solid rgba(0, 0, 0, 0.52);
+    border-radius: 5ex;
+    padding: 3ex;
+    background: #B4AEE6;
+    align-self: center;
+}
+
+@media (max-width: 992px){
+    body{font-size: 30px;}
+    .ds-thread,#content
+    {
+        align-self: flex-start;
+        margin: 1ex;
+        border-radius: 1ex;
+        padding: 2ex;
+    }
+    footer
+    {
+        margin: 0;
+        border-radius: .5ex;
+        padding: 1ex;
+    }
+}
+
+
+header
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: #000;
+    align-items: center;
+}
+header nav {
+    flex-grow: 1;
+}
+
+
+.tag
+{
+    border:solid 1px blue;
+    border-radius:5px;
+    background:#aad2f0;
+    display:inline;
+}
+
+h1.page-title
+{
+    text-align:center;
+}
+
+
+.post ul, .post ol {
+  margin-left: 1.35em;
+}
+.posts {
+  list-style-type: none;
+}
+
+.category li.listing-seperator {
+  padding-bottom: 0px;
+}
+li.listing-seperator {
+  font-family: "telexregular", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 1ex;
+  color: #4C4B4B;
+  padding-top: 20px;
+}
+.category li {
+  list-style-type: none;
+  margin: 0 0 0 35px;
+  line-height: 1.5;
+  font-size: 1ex;
+}
+.posts li {
+  margin-bottom: 10px;
+}
+
+user agent stylesheetli {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+
+user agent stylesheetul, menu, dir {
+  display: block;
+  list-style-type: disc;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+}
+
+.category {
+  line-height: 1.4;
+  font-size: 1ex;
+  font-weight: 400;
+  padding-right: 2ex;
+}
+.wrap {
+  max-width: 830px;
+  margin: 0 auto;
+  zoom: 1;
+  text-align: left;
+}
+
+blockquote {
+    border-left: 2ex solid #ddd;
+    border-radius:1ex;
+}
+li.listing-seperator:before {
+    color: #ccc;
+}
+
+#content > p{
+    text-indent: 2em;
+}

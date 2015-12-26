@@ -1,0 +1,157 @@
+---
+---
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+        body
+        {
+            position:relative;
+            background:#aad2f0;
+            padding: 0 5%;
+        }
+
+        .tab
+        {
+            border-bottom: #000 1px solid;
+            border-left: #000 1px solid;
+            border-top: #000 1px solid;
+            border-right: #000 1px solid;
+            //width:70%;
+            border-radius:10px;
+            background: #f5f5d5;
+        }
+        .tab ul
+        {
+            zoom: 1;
+            clear: both;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #tip
+        {
+            background:rgb(33,148,231);
+            color:red;
+        }
+        .tab ul:after
+        {
+            display: block;
+            height: 0px;
+            visibility: hidden;
+            clear: both;
+            content: "";
+        }
+        .tab ul li
+        {
+            text-align: center;
+            line-height: 3ex;
+            min-width: 8ex;
+            display: inline;
+            //float: left;
+            min-height: 3ex;
+            color: #fff;
+            border-radius:5px;
+            margin-right:2px;
+            background:rgb(33,148,231)
+        }
+
+        @media(max-width: 992px){
+            body{font-size: 35px;}
+            .tab ul li {
+                min-width:8ex;
+            }
+        }
+        .tab ul li.on
+        {
+            background: #fff;
+            color: #000;
+        }
+
+        .index_list {
+            display: none;
+            list-style-position:inside;
+        }
+
+        </style>
+        <script src="./ref/jquery-2.1.3.min.js"> </script>
+        <script type="text/javascript">
+        function ok(a)
+        {
+          var li=$(a).parent();
+          li.attr("class","on");
+          var showDiv=$("#cont_"+$(a).attr("id"));
+          showDiv.attr("style","display:block");
+          showDiv.attr("class","one block");
+          var othersli=li.siblings();
+          for(var i=0;i<othersli.length;++i)
+          {
+                var li=$(othersli[i]);
+                li.attr("class","");
+                var blockDiv=$("#cont_"+$(li.children()[0]).attr("id"));
+                blockDiv.attr("style","display:none");
+                blockDiv.attr("class","one");
+          }
+        }
+        </script>
+        <title>白日呓语</title>
+    </head>
+    <body>
+        {% capture tags %}
+          {% for tag in site.tags %}
+            {{ tag[0] }}
+          {% endfor %}
+        {% endcapture %}
+        {% assign sortedtags = tags | split:' ' | sort %}
+        <header>
+            <h1>白日呓语</h1>
+            <p> 屈原说：“世人皆醉，我独醒。世人皆浊，吾独清。”我不敢标榜自己如屈原所说。第一是因为，自己可能做不到；第二就是因为，当下世风，让我辨不清什么是醉，什么是醒；什么是浊，什么是清。所以，只好白日呓语。
+            </p>
+        </header>
+        <div>
+            <nav class="tab">
+                <ul>
+                    {% for tag in sortedtags %}
+                    <li><a href="#{{tag}}" id="{{ tag }}" onmouseover="ok(this)">{{ tag }}</a></li>
+                    {% endfor %}
+                    <li id="存档">
+                        <a href="/archive" >存档</a>
+                        <span id="tip" style="display:none">点击查看所有文档</span>
+                    </li>
+
+                </ul>
+            </nav>
+
+            {% for tag in sortedtags %}
+            <ol id="cont_{{tag}}" class="index_list">
+                {% for post in site.tags[tag] %}
+                  {% if forloop.index > 20 %}
+                      {% break %}
+                  {% endif %}
+                 <li> {{ post.date | date:"%Y-%m-%d" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ol>
+            {%endfor%}
+            </div>
+        <script>
+        var tag=window.location.href.split("#")[1];
+        if(tag) {
+            if(tag[0]=='%') {
+               tag=decodeURIComponent(tag);
+            }
+        }else{
+            tag="编程";
+        }
+        //console.log(tag);
+        ok($("#"+tag)[0]);
+        $("#存档").mouseover(function(){
+            $("#tip").toggle();
+        }).mouseout(function(){
+            $("#tip").toggle();
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+hostname: zhangjg.github.io
+permalink: date
+markdown: redcarpet
+encoding: "utf-8"
+source: [_post/2015,_post]
+paginate: 20
+paginate_path: "/archive/page:num/"
+
+defaults:
+    -
+        scope:
+            path: ""
+            type: "posts"
+        values:
+            layout: "default"
+            author: "Zhangjg"
