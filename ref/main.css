@@ -4,7 +4,7 @@ body {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   margin:0;
 }
 .ds-thread,#content
@@ -31,7 +31,7 @@ footer
     body{font-size: 30px;}
     .ds-thread,#content
     {
-        align-self: flex-start;
+        //align-self: flex-start;
         margin: 1ex;
         border-radius: 1ex;
         padding: 2ex;
@@ -50,12 +50,13 @@ header
     position: fixed;
     top: 0;
     width: 100%;
-    display: flex;
     display: -webkit-flex;
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     background: #000;
     align-items: center;
+    align-self:flex-start;
 }
 header nav {
     flex-grow: 1;
