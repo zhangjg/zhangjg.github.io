@@ -31,7 +31,7 @@ footer
     body{font-size: 20px;}
     .ds-thread,#content
     {
-        //align-self: flex-start;
+        align-self: flex-start;
         margin: 1ex;
         border-radius: 1ex;
         padding: 2ex;
