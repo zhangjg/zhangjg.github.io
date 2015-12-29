@@ -134,8 +134,11 @@ user agent stylesheetul, menu, dir {
 
 blockquote {
     border-left: 2ex solid #ddd;
-    border-radius:1ex;
+    border-right: 2ex solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
+
 li.listing-seperator:before {
     color: #ccc;
 }
