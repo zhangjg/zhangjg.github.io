@@ -72,7 +72,7 @@ $(info test:$test)
     SCR2 += $(SCR2)
     $(info SCR2=$(SCR2)) #output "test.c test.h test.c test.h"
     SCR1 += SCR1 #error "unterminated variable reference."
-    $(info SCR1=$(SCR1)) #ouput "test.c test.h test.c test.h"
+    $(info SCR1=$(SCR1))
     ```
 
 也就是说试用`:=`定义的变量，在展开(引用其值)的时候，立即展开，而其他形式定义的变量延迟展开（或者理解为循环展开）。`SCR1 += $(SCR1)`使得`SCR1`的值，不停的变换，因此就没有结束的时候，这也就是为什么最后的输出错误提示的意思。由`:=`定义的SCR2，解析`SCR2 += $(SCR2)`的时候，会立即把SCR2的当前的值展开，而不是等这个变量的值不变之后，在做最后的展开。所以，如果你定义的变量，在涉及到了循环引用（无论是现在这样的直接循环，又或者是多个变量之间相互的间接循环引用），为了避免引用不能结束的情况，就使用`:=`来定义变量。
