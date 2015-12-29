@@ -49,6 +49,7 @@ header
 {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     display: -webkit-flex;
     display: flex;
@@ -69,11 +70,6 @@ header nav {
     border-radius:5px;
     background:#aad2f0;
     display:inline;
-}
-
-h1.page-title
-{
-    align-self: center;
 }
 
 
