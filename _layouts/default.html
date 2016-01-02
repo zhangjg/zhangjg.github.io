@@ -23,7 +23,7 @@
     <div style="align-self: center;">
         <span style="padding-right:5ex;">发表时间：{{ page.date| date:"%Y-%m-%d" }}</span>
         <span style="padding-right:5ex;">作者:{{page.author}}</span>
-        <span> 约{{ page.content | number_of_words }}字</span>
+        <span> 约{{ page.content | number_of_characters }}字</span>
     </div>
     <div id="content">
         {{ content}}
