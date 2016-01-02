@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <a id='home' href="http://zhangjg.github.io">
+        <a id='home' href="/">
             <img border="0" src="/ref/home.png" >
         </a>
         <nav id="head">
@@ -23,7 +23,9 @@
     <div style="align-self: center;">
         <span style="padding-right:5ex;">发表时间：{{ page.date| date:"%Y-%m-%d" }}</span>
         <span style="padding-right:5ex;">作者:{{page.author}}</span>
-        <span> 约{{ page.content | size }}字</span>
+        {%assign about_size = page.content | size  %}
+        {%assign about_size = about_size - about_size %100 %}
+        <span> 约{{ about_size}}字</span>
     </div>
     <div id="content">
         {{ content}}
