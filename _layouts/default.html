@@ -25,7 +25,7 @@
         <span style="padding-right:5ex;">作者:{{page.author}}</span>
         {%assign about_size = page.content | size  %}
         {%assign about_size = about_size - about_size %100 %}
-        <span> 约{{ about_size}}字</span>
+        <span> 约 <script > var size={{ about_size}}; size -= size%100; document.write(size);</script>字</span>
     </div>
     <div id="content">
         {{ content}}
