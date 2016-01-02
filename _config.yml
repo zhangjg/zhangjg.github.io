@@ -1,5 +1,5 @@
 hostname: zhangjg.github.io
-permalink: /blog/:date
+permalink: date
 markdown: redcarpet
 encoding: "utf-8"
 source: [_post/2015,_post/2016]
@@ -12,5 +12,6 @@ defaults:
             path: ""
             type: "posts"
         values:
+            categories: blog
             layout: "default"
             author: "Zhangjg"
