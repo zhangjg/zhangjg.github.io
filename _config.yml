@@ -1,5 +1,5 @@
 hostname: zhangjg.github.io
-permalink: date
+permalink: /:categories/:year-:month-:day-:title.html
 markdown: redcarpet
 encoding: "utf-8"
 source: [_post/2015,_post/2016]
