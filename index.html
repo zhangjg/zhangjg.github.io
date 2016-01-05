@@ -89,22 +89,21 @@
             var showDiv = $("#cont_"+a.getAttribute("id"));
             showDiv.setAttribute("style","display:block");
             showDiv.setAttribute("class","one block");
-          var othersli = [].filter.call(
-              li.parentNode.children,
-              child => child!= li );
-          for(var i=0;i<othersli.length;++i)
-          {
+            var othersli = [].filter.call(
+                li.parentNode.children,
+                child => child!= li );
+            for(var i=0;i<othersli.length;++i)
+            {
                 var li=othersli[i];
                 li.setAttribute("class","");
                 var id=
                 console.log(id);
-                var blockDiv=$("#cont_"+li.children[0].getAttribute("id");
+                var blockDiv=$("#cont_"+li.children[0].getAttribute("id"));
                 if(blockDiv != null){
                     blockDiv.setAttribute("style","display:none");
                     blockDiv.setAttribute("class","one");
                 }
-
-          }
+            }
         }
         </script>
         <title>白日呓语</title>
