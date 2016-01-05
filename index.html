@@ -96,7 +96,9 @@
           {
                 var li=othersli[i];
                 li.setAttribute("class","");
-                var blockDiv=$("#cont_"+li.children[0].getAttribute("id"));
+                var id="#cont_"+li.children[0].getAttribute("id");
+                console.log(id);
+                var blockDiv=$(id);
                 blockDiv.setAttribute("style","display:none");
                 blockDiv.setAttribute("class","one");
           }
