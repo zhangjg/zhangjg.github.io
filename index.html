@@ -79,23 +79,35 @@
         }
 
         </style>
-        <script src="./ref/jquery-2.1.3.min.js"> </script>
+        <!--script src="./ref/jquery-2.1.3.min.js"> </script-->
         <script type="text/javascript">
+        var $ = document.querySelector.bing(document);
         function ok(a)
         {
-          var li=$(a).parent();
-          li.attr("class","on");
-          var showDiv=$("#cont_"+$(a).attr("id"));
-          showDiv.attr("style","display:block");
-          showDiv.attr("class","one block");
-          var othersli=li.siblings();
+        //   var li=$(a).parent();
+            var li=$(a).parentNode;
+            li.setAttribute("class","on");
+        //   var showDiv=$("#cont_"+$(a).attr("id"));
+            var showDiv = $("#cont_"+$(a).getAttribute("id"));
+            // showDiv.attr("style","display:block");
+            // showDiv.attr("class","one block");
+            showDiv.setAttribute("style","display:block");
+            showDiv.setAttribute("class","one block");
+        //   var othersli=li.siblings();
+          var othersli = [].filter.call(
+              li.parentNode.children,
+              child => child!= li );
           for(var i=0;i<othersli.length;++i)
           {
                 var li=$(othersli[i]);
-                li.attr("class","");
-                var blockDiv=$("#cont_"+$(li.children()[0]).attr("id"));
-                blockDiv.attr("style","display:none");
-                blockDiv.attr("class","one");
+                // li.attr("class","");
+                li.setAttribute("class","");
+                // var blockDiv=$("#cont_"+$(li.children()[0]).attr("id"));
+                var blockDiv=$("#cont_"+$(li.children[0].getAttribute("id")));
+                // blockDiv.attr("style","display:none");
+                // blockDiv.attr("class","one");
+                blockDiv.setAttribute("style","display:none");
+                blockDiv.setAttribute("class","one");
           }
         }
         </script>
@@ -148,12 +160,21 @@
             tag="编程";
         }
         //console.log(tag);
-        ok($("#"+tag)[0]);
-        $("#存档").mouseover(function(){
-            $("#tip").toggle();
-        }).mouseout(function(){
-            $("#tip").toggle();
-        });
+        ok($("#"+tag));
+        var f=function(){
+            if($("#tip").getAttribute("style")==""){
+                $("#tip").setAttribute("style","display:none");
+            }else{
+                $("#tip").setAttribute("style","");
+            }
+        }
+        $("#存档").addEventListener("onmouseover",f);
+        $("#存档").addEventListener("onmouseout",f);
+        // $("#存档").mouseover(function(){
+        //     $("#tip").toggle();
+        // }).mouseout(function(){
+        //     $("#tip").toggle();
+        // });
         </script>
     </body>
 </html>
