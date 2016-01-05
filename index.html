@@ -85,7 +85,7 @@
         function ok(a)
         {
         //   var li=$(a).parent();
-            var li=$(a).parentNode;
+            var li=a.parentNode;
             li.setAttribute("class","on");
         //   var showDiv=$("#cont_"+$(a).attr("id"));
             var showDiv = $("#cont_"+$(a).getAttribute("id"));
