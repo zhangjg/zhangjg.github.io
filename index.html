@@ -96,11 +96,14 @@
           {
                 var li=othersli[i];
                 li.setAttribute("class","");
-                var id="#cont_"+li.children[0].getAttribute("id");
+                var id=
                 console.log(id);
-                var blockDiv=$(id);
-                blockDiv.setAttribute("style","display:none");
-                blockDiv.setAttribute("class","one");
+                var blockDiv=$("#cont_"+li.children[0].getAttribute("id");
+                if(blockDiv != null){
+                    blockDiv.setAttribute("style","display:none");
+                    blockDiv.setAttribute("class","one");
+                }
+
           }
         }
         </script>
@@ -124,8 +127,8 @@
                     {% for tag in sortedtags %}
                     <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="ok(this)">{{ tag }}</a></li>
                     {% endfor %}
-                    <li >
-                        <a href="/archive" id="存档">存档</a>
+                    <li id="存档">
+                        <a href="/archive" >存档</a>
                         <span id="tip" style="display:none">点击查看所有文档</span>
                     </li>
 
@@ -161,13 +164,8 @@
                 $("#tip").setAttribute("style","");
             }
         }
-        $("#存档").addEventListener("onmouseover",f);
-        $("#存档").addEventListener("onmouseout",f);
-        // $("#存档").mouseover(function(){
-        //     $("#tip").toggle();
-        // }).mouseout(function(){
-        //     $("#tip").toggle();
-        // });
+        $("#存档").addEventListener("mouseover",f);
+        $("#存档").addEventListener("mouseout",f);
         </script>
     </body>
 </html>
