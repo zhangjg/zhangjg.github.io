@@ -3,7 +3,7 @@
 <head>
 　　<meta charset="utf-8" />
 　　<title>{{ page.title }}</title>
-    <script src="/ref/jquery-2.1.3.min.js"></script>
+    <!--script src="/ref/jquery-2.1.3.min.js"></script-->
     <link href="/ref/main.css" rel="stylesheet"/>
     <link href="/ref/prettify.css" rel="stylesheet"/>
     <script src="/ref/prettify.js"></script>
@@ -49,11 +49,17 @@
     {% endif %}
     </footer>
     <script>
-       var t=$("pre>code");
-       $(function(){
-            t.addClass("prettyprint linenums");
+        var codes = document.querySelectorAll("pre>code");
+    //    var t=$("pre>code");
+        for(var i=0;i<codes.length;++i){
+            var code = codes[i];
+            code.setAttribute("class","prettyprint linenums");
             prettyPrint();
-       });
+        }
+        // $(function(){
+        //     t.addClass("prettyprint linenums");
+        //     prettyPrint();
+        // });
     </script>
     <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
