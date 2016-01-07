@@ -81,7 +81,7 @@
         </style>
         <script type="text/javascript">
         var $ = document.querySelector.bind(document);
-        function ok(a)
+        function mouseover(a)
         {
             var li=a.parentNode;
             li.setAttribute("class","on");
@@ -98,6 +98,10 @@
                     blockDiv.setAttribute("style","display:none");
                 }
             }
+        }
+        function mouseout(a){
+            var li=a.parentNode;
+            li.setAttribute("class","");
         }
         </script>
         <title>白日呓语</title>
@@ -118,7 +122,7 @@
             <nav class="tab">
                 <ul>
                     {% for tag in sortedtags %}
-                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="ok(this)">{{ tag }}</a></li>
+                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="mouseover(this)" onmouseout="mouseout(this)">{{ tag }}</a></li>
                     {% endfor %}
                     <li id="存档">
                         <a href="/archive" >存档</a>
@@ -153,7 +157,6 @@
         }else{
             tag="编程";
         }
-        ok($("#"+tag));
         var f=function(){
             if($("#tip").getAttribute("style")==""){
                 $("#tip").setAttribute("style","display:none");
