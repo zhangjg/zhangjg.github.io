@@ -6,8 +6,9 @@
         <style type="text/css">
         body
         {
-            padding: 0 5%;
+            position:relative;
             background:#aad2f0;
+            padding: 0 5%;
         }
 
         .tab
@@ -71,35 +72,27 @@
         }
 
         .index_list {
-            //display: none;
+            display: none;
             list-style-position:inside;
-        }
-        .nolink{
-            text-decoration: none;
         }
 
         </style>
+        <script src="./ref/jquery-2.1.3.min.js"> </script>
         <script type="text/javascript">
-        var $ = document.querySelector.bind(document);
-        function mouseover(a)
+        function ok(a)
         {
-            var li=a.parentNode;
-            li.setAttribute("class","on");
-            var showDiv = $("#cont_"+a.getAttribute("id"));
-            showDiv.setAttribute("style","display:block");
-            var othersli = [].filter.call(
-                li.parentNode.children,
-                child => child!= li );
-            for(var i=0;i<othersli.length;++i)
-            {
-                var hidenLi=othersli[i];
-                hidenLi.setAttribute("class","");
-                var hiddenDiv=$("#cont_"+hidenLi.children[0].getAttribute("id"));
-                if(hiddenDiv != null){
-                    hiddenDiv.setAttribute("style","display:none");
-                }
-            }
-            return false;
+          var li=$(a).parent();
+          li.attr("class","on");
+          var showDiv=$("#cont_"+$(a).attr("id"));
+          showDiv.attr("style","display:block");
+          var othersli=li.siblings();
+          for(var i=0;i<othersli.length;++i)
+          {
+                var li=$(othersli[i]);
+                li.attr("class","");
+                var blockDiv=$("#cont_"+$(li.children()[0]).attr("id"));
+                blockDiv.attr("style","display:none");
+          }
         }
         </script>
         <title>白日呓语</title>
@@ -120,7 +113,7 @@
             <nav class="tab">
                 <ul>
                     {% for tag in sortedtags %}
-                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="mouseover(this)">{{ tag }}</a></li>
+                    <li><a href="#{{tag}}" id="{{ tag }}" onmouseover="ok(this)">{{ tag }}</a></li>
                     {% endfor %}
                     <li id="存档">
                         <a href="/archive" >存档</a>
@@ -131,40 +124,32 @@
             </nav>
 
             {% for tag in sortedtags %}
-                {% if tag == '编程' %}
-                    {% assign style = 'display:display;' %}
-                {%else %}
-                    {% assign style = 'display:none' %}
-                {%endif%}
-            <ol id="cont_{{tag}}" class="index_list" style="{{style}}" >
+            <ol id="cont_{{tag}}" class="index_list">
                 {% for post in site.tags[tag] %}
-                    {% if forloop.index > 20 %}
-                        {% break %}
-                    {% endif %}
+                  {% if forloop.index > 20 %}
+                      {% break %}
+                  {% endif %}
                  <li> {{ post.date | date:"%Y-%m-%d" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
                 {% endfor %}
             </ol>
             {%endfor%}
-        </div>
+            </div>
         <script>
-            var tag=window.location.href.split("#")[1];
-            if(tag) {
-                if(tag[0]=='%') {
-                   tag=decodeURIComponent(tag);
-                }
-                mouseover($("#"+tag));
+        var tag=window.location.href.split("#")[1];
+        if(tag) {
+            if(tag[0]=='%') {
+               tag=decodeURIComponent(tag);
             }
-            var f=function(){
-                if($("#tip").getAttribute("style")==""){
-                    $("#tip").setAttribute("style","display:none");
-                }else{
-                    $("#tip").setAttribute("style","");
-                }
-            }
-            $("#存档").addEventListener("mouseover",f);
-            $("#存档").addEventListener("mouseout",f);
-
-            $("#哲学").addEventListener("touchstart",mouseover);
+        }else{
+            tag="编程";
+        }
+        //console.log(tag);
+        ok($("#"+tag)[0]);
+        $("#存档").mouseover(function(){
+            $("#tip").toggle();
+        }).mouseout(function(){
+            $("#tip").toggle();
+        });
         </script>
     </body>
 </html>
