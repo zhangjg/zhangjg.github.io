@@ -92,11 +92,11 @@
                 child => child!= li );
             for(var i=0;i<othersli.length;++i)
             {
-                var li=othersli[i];
-                var hiddenDiv=$("#cont_"+li.children[0].getAttribute("id"));
+                var hidenLi=othersli[i];
+                hidenLi.setAttribute("class","");
+                var hiddenDiv=$("#cont_"+hidenLi.children[0].getAttribute("id"));
                 if(hiddenDiv != null){
                     hiddenDiv.setAttribute("style","display:none");
-                    hiddenDiv.setAttribute("class","");
                 }
             }
         }
