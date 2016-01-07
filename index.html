@@ -120,7 +120,7 @@
             <nav class="tab">
                 <ul>
                     {% for tag in sortedtags %}
-                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="mouseover(this)" onclick="mouseover(this)">{{ tag }}</a></li>
+                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="mouseover(this)">{{ tag }}</a></li>
                     {% endfor %}
                     <li id="存档">
                         <a href="/archive" >存档</a>
@@ -163,6 +163,8 @@
             }
             $("#存档").addEventListener("mouseover",f);
             $("#存档").addEventListener("mouseout",f);
+
+            $("#哲学").addEventListener("touchstart",mouseover);
         </script>
     </body>
 </html>
