@@ -87,18 +87,15 @@
             li.setAttribute("class","on");
             var showDiv = $("#cont_"+a.getAttribute("id"));
             showDiv.setAttribute("style","display:block");
-            showDiv.setAttribute("class","one block");
             var othersli = [].filter.call(
                 li.parentNode.children,
                 child => child!= li );
             for(var i=0;i<othersli.length;++i)
             {
                 var li=othersli[i];
-                li.setAttribute("class","");
                 var blockDiv=$("#cont_"+li.children[0].getAttribute("id"));
                 if(blockDiv != null){
                     blockDiv.setAttribute("style","display:none");
-                    blockDiv.setAttribute("class","one");
                 }
             }
         }
@@ -141,7 +138,7 @@
                 {% endfor %}
             </ol>
             {%endfor%}
-            </div>
+        </div>
         <script>
         var tag=window.location.href.split("#")[1];
         if(tag) {
@@ -151,7 +148,6 @@
         }else{
             tag="编程";
         }
-        //console.log(tag);
         ok($("#"+tag));
         var f=function(){
             if($("#tip").getAttribute("style")==""){
