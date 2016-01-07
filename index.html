@@ -129,12 +129,11 @@
             </nav>
 
             {% for tag in sortedtags %}
-            {% if tag == '编程' %}
-                {% assign style = 'display:display;' %}
-            {%else
-                {% assign style = 'display:none' %}
-            %}
-            {%endif%}
+                {% if tag == '编程' %}
+                    {% assign style = 'display:display;' %}
+                {%else %}
+                    {% assign style = 'display:none' %}
+                {%endif%}
             <ol id="cont_{{tag}}" class="index_list" style="{{style}}" >
                 {% for post in site.tags[tag] %}
                     {% if forloop.index > 20 %}
