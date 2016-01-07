@@ -129,11 +129,20 @@
             </nav>
 
             {% for tag in sortedtags %}
+            <span> {{tag}}</span>
+            <ol>
+            {% for post in site.tags[tag] %}
+                {% if forloop.index > 20 %}
+                    {% break %}
+                {% endif %}
+                <li> {{ post.date | date:"%Y-%m-%d" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+            </ol>
             <ol id="cont_{{tag}}" class="index_list">
                 {% for post in site.tags[tag] %}
-                  {% if forloop.index > 20 %}
-                      {% break %}
-                  {% endif %}
+                    {% if forloop.index > 20 %}
+                        {% break %}
+                    {% endif %}
                  <li> {{ post.date | date:"%Y-%m-%d" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
                 {% endfor %}
             </ol>
