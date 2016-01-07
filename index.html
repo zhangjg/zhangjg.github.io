@@ -99,6 +99,8 @@
                     hiddenDiv.setAttribute("style","display:none");
                 }
             }
+            alter(a.innerHTML);
+            return null;
         }
         </script>
         <title>白日呓语</title>
@@ -146,15 +148,22 @@
             {%endfor%}
         </div>
         <script>
-        var f=function(){
-            if($("#tip").getAttribute("style")==""){
-                $("#tip").setAttribute("style","display:none");
-            }else{
-                $("#tip").setAttribute("style","");
+            var tag=window.location.href.split("#")[1];
+            if(tag) {
+                if(tag[0]=='%') {
+                   tag=decodeURIComponent(tag);
+                }
+                mouseover($("#"+tag));
             }
-        }
-        $("#存档").addEventListener("mouseover",f);
-        $("#存档").addEventListener("mouseout",f);
+            var f=function(){
+                if($("#tip").getAttribute("style")==""){
+                    $("#tip").setAttribute("style","display:none");
+                }else{
+                    $("#tip").setAttribute("style","");
+                }
+            }
+            $("#存档").addEventListener("mouseover",f);
+            $("#存档").addEventListener("mouseout",f);
         </script>
     </body>
 </html>
