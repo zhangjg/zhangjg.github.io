@@ -93,15 +93,12 @@
             for(var i=0;i<othersli.length;++i)
             {
                 var li=othersli[i];
-                var blockDiv=$("#cont_"+li.children[0].getAttribute("id"));
-                if(blockDiv != null){
-                    blockDiv.setAttribute("style","display:none");
+                var hiddenDiv=$("#cont_"+li.children[0].getAttribute("id"));
+                if(hiddenDiv != null){
+                    hiddenDiv.setAttribute("style","display:none");
+                    hiddenDiv.setAttribute("class","");
                 }
             }
-        }
-        function mouseout(a){
-            var li=a.parentNode;
-            li.setAttribute("class","");
         }
         </script>
         <title>白日呓语</title>
@@ -122,7 +119,7 @@
             <nav class="tab">
                 <ul>
                     {% for tag in sortedtags %}
-                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="mouseover(this)" onmouseout="mouseout(this)">{{ tag }}</a></li>
+                    <li><a class="nolink" href="#{{tag}}" id="{{ tag }}" onmouseover="mouseover(this)" onclick="mouseout(this)">{{ tag }}</a></li>
                     {% endfor %}
                     <li id="存档">
                         <a href="/archive" >存档</a>
@@ -149,14 +146,6 @@
             {%endfor%}
         </div>
         <script>
-        var tag=window.location.href.split("#")[1];
-        if(tag) {
-            if(tag[0]=='%') {
-               tag=decodeURIComponent(tag);
-            }
-        }else{
-            tag="编程";
-        }
         var f=function(){
             if($("#tip").getAttribute("style")==""){
                 $("#tip").setAttribute("style","display:none");
