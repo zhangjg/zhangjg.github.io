@@ -6,6 +6,11 @@
     <link href="/ref/main.css" rel="stylesheet"/>
     <link href="/ref/prettify.css" rel="stylesheet"/>
     <script src="/ref/prettify.js"></script>
+    <style type="text/css">
+        .nolink{
+            text-decoration:none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,7 +19,7 @@
         </a>
         <nav id="head">
         {% for tag in page.tags %}
-            <div class="tag"><a href="/#{{tag}}">{{tag}}</a></div>
+            <div class="tag"><a href="/#{{tag}}" class="nolink">{{tag}}</a></div>
         {% endfor %}
         </nav>
     </header>
@@ -30,7 +35,7 @@
         {{ content}}
     </div>
     <footer>
-        欢迎<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ZQ8MCwIQCh8NBAsCJRQUSwYKCA" style="text-decoration:none;">指正</a>！<br>
+        欢迎<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ZQ8MCwIQCh8NBAsCJRQUSwYKCA" class="nolink">指正</a>！<br>
     {% if page.tags.size == 0 %}
     返回<a href="/">主页</a>!
     {% else %}
@@ -49,16 +54,11 @@
     </footer>
     <script>
         var codes = document.querySelectorAll("pre>code");
-    //    var t=$("pre>code");
         for(var i=0;i<codes.length;++i){
             var code = codes[i];
             code.setAttribute("class","prettyprint linenums");
             prettyPrint();
         }
-        // $(function(){
-        //     t.addClass("prettyprint linenums");
-        //     prettyPrint();
-        // });
     </script>
     <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
