@@ -144,3 +144,8 @@ li.listing-seperator:before {
 #content > p{
     text-indent: 2em;
 }
+
+#content > img {
+    text-align: center;
+    width: 75wv;
+}
