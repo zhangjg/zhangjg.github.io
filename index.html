@@ -1,17 +1,30 @@
----
----
+
 <!DOCTYPE html>
 <html lang="zh">
     <head>
         <title>zhangjg.github.io</title>
         <meta charset="utf-8"/>
+        <style>
+            body{
+                display: -webkit-flex;
+                display: flex;
+                justify-content: center;
+            }
+            .mid{
+                flex-grow: 0;
+                align-self: center;
+                width: 300px;
+                height:300px;
+            }
+        </style>
     </head>
     <body>
-        <h1>张金国的个人网站</h1>
-        <hr>
-        <ol>
-            <li><a href="/blog">我的博客</a></li>
-            <li><a href="/about.html">关于</a></li>
-        <ol>
+        <div class="mid">
+            <img src="./images/long.jpg"></img>
+            <h1>张金国的个人网站</h1>
+            <hr>
+            <div><a href="/blog">我的博客</a>/<a href="/about.html">关于</a></div>
+            <hr>
+        </div>
     </body>
 </html>
